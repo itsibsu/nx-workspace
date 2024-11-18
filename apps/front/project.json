@@ -1,9 +1,48 @@
 {
   "name": "front",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "apps/front",
   "sourceRoot": "apps/front/src",
   "projectType": "application",
   "tags": [],
-  "// targets": "to see all targets run: nx show project front --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "dependsOn": ["build"],
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}",
+        "{workspaceRoot}/.tsbuildinfo"
+      ],
+      "options": {
+        "tsConfig": "{projectRoot}/tsconfig.app.json",
+        "outputPath": "{workspaceRoot}/dist/{projectRoot}"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      },
+      "cache": true
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "front:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "front:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "front:build:production",
+          "hmr": false
+        }
+      }
+    }
+  }
 }

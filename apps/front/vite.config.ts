@@ -7,6 +7,19 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/front',
+  plugins: [
+    react(),
+    nxViteTsPaths(),
+    nxCopyAssetsPlugin(['*.md']),
+  ],
+  build: {
+    outDir: '../../dist/apps/front',
+    emptyOutDir: false,
+    reportCompressedSize: true,
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+  },
   server: {
     port: 4200,
     host: 'localhost',
@@ -14,19 +27,6 @@ export default defineConfig({
   preview: {
     port: 4300,
     host: 'localhost',
-  },
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
-  build: {
-    outDir: '../../dist/apps/front',
-    emptyOutDir: true,
-    reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    },
   },
   test: {
     watch: false,
@@ -37,6 +37,9 @@ export default defineConfig({
     coverage: {
       reportsDirectory: '../../coverage/apps/front',
       provider: 'v8',
+    },
+    cache: {
+      dir: '../../node_modules/.vitest/apps/front',
     },
   },
 });
