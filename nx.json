@@ -11,7 +11,10 @@
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/src/test-setup.[jt]s"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.gitlab-ci.yml"]
+    "sharedGlobals": [
+      "{workspaceRoot}/.gitlab-ci.yml",
+      "{workspaceRoot}/.github/workflows/main.yml"
+    ]
   },
   "nxCloudId": "673a87639964a9212037670c",
   "plugins": [
