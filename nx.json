@@ -35,12 +35,15 @@
     },
     "lint": {
       "cache": true,
+      "dependsOn": ["^lint", "lint"],
       "executor": "@nx/eslint:lint",
       "inputs": [
         "default",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js"
-      ]
+        "{projectRoot}/eslint.config.cjs"
+      ],
+      "options": {
+        "fix": true
+      }
     }
   },
   "plugins": [

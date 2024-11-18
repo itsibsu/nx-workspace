@@ -7,7 +7,6 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "ES2021",
-
     "importHelpers": true,
     "outDir": "build",
     "experimentalDecorators": true,
@@ -17,7 +16,6 @@
     "declaration": false,
     "resolveJsonModule": true,
     "allowJs": true,
-
     "paths": {
       "@app/front": ["./apps/front/tsconfig.json"]
     }
